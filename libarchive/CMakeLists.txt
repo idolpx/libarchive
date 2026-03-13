@@ -289,4 +289,9 @@ IF(ENABLE_INSTALL)
   INSTALL(FILES ${include_HEADERS} DESTINATION include)
 ENDIF()
 
+
 add_subdirectory(test)
+
+IF(ESPRESSIF)
+  idf_component_register( SRCS ${libarchive_SOURCES} INCLUDES ${include_HEADERS} )
+ENDIF(ESPRESSIF)

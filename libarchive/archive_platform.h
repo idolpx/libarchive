@@ -39,6 +39,10 @@
 /* archive.h and archive_entry.h require this. */
 #define	__LIBARCHIVE_BUILD 1
 
+#if defined(__ESP32IDF__)
+#define PLATFORM_CONFIG_H "config_esp32.h"
+#endif
+
 #if defined(PLATFORM_CONFIG_H)
 /* Use hand-built config.h in environments that need it. */
 #include PLATFORM_CONFIG_H

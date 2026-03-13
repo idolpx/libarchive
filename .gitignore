@@ -96,3 +96,7 @@ test-suite.log
 .*.sw?
 
 *.pdb
+
+build/
+confdefs.h
+conftest.*

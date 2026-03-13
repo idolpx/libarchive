@@ -74,6 +74,9 @@ int
 __archive_create_child(const char *cmd, int *child_stdin, int *child_stdout,
 		pid_t *out_child)
 {
+#if defined(__ESP32IDF__)
+	printf("__archive_create_child[%s]\r\n", cmd);
+#else
 	pid_t child = -1;
 	int stdin_pipe[2], stdout_pipe[2], tmp;
 
@@ -223,6 +226,8 @@ stdin_opened:
 	close(stdin_pipe[1]);
 state_allocated:
 	__archive_cmdline_free(cmdline);
+#endif
+
 	return ARCHIVE_FAILED;
 }
 
